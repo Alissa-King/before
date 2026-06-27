@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Everything I Couldn't Keep — a bit of before</title>
+  <link rel="stylesheet" href="/abitofbefore/style.css" />
+</head>
+<body>
+  <header>
+    <a href="/abitofbefore/" class="site-title">a bit of before</a>
+    <nav>
+      <a href="/abitofbefore/">poems</a>
+      <a href="/abitofbefore/about.html">about</a>
+    </nav>
+  </header>
+  <main>
+    <div class="poem-header">
+      <h1>Everything I Couldn't Keep</h1>
+      <p class="poem-meta">IV</p>
+    </div>
+
+    <div class="poem-body">
+      <p>
+        There's a self I outgrew still standing in the shed skin,<br>
+        in the husk of who I was before the body chose to begin<br>
+        the long shape down and step out clean — and she isn't sorrow,<br>
+        isn't ghost, she's just the hollow held in the exact pose<br>
+        of the last day she was worn.
+      </p>
+
+      <p>
+        And I'd like to say I shed her like a snake does, without grief,<br>
+        no backward glance, no mourning for the casing or the brief<br>
+        warm life it kept — but nothing living leaves itself that cleanly.<br>
+        You split along the seam. You climb out raw and freely<br>
+        soft, and somewhere behind you, perfect and empty and pale,<br>
+        the whole of who you were stands still — every scale<br>
+        and every line of you preserved in the thing you failed to carry.
+      </p>
+
+      <p>
+        I made you out of everything I couldn't keep.<br>
+        The way you go gentle at a certain pitch of voice —<br>
+        I learned that. The way your hands have learned to stay.<br>
+        The way you cross a room toward someone's grief<br>
+        instead of away. That was me, in a season you forget,<br>
+        learning tenderness the slow way — the lonely way — through the fall.
+      </p>
+
+      <p>
+        You think it's instinct. It's inheritance.<br>
+        It's the cup I filled in the dark, in the hard<br>
+        unwitnessed years, so you'd have something to drink when you woke.
+      </p>
+
+      <p>
+        For a while I envied you. Stood in the cast-off frame<br>
+        and ached at how lightly you wear it —<br>
+        how you carry my whole apprenticeship like a gift,<br>
+        like a thing you were born to hold,<br>
+        like the first warm gold of a morning after a cold<br>
+        you never had to survive.
+      </p>
+
+      <p><em>But envy is just love that hasn't finished arriving.</em></p>
+
+      <p>
+        And here is where it softens. Here is where I set it down.<br>
+        I look at you now — easy in the skin I never could grow into —<br>
+        and I'm not the wound anymore.<br>
+        I'm the practice that made you.<br>
+        I'm every draft you needed<br>
+        to become someone who could stay.
+      </p>
+
+      <p>
+        And you don't owe me grief. You owe me nothing at all.<br>
+        The way you live is the only thanks I'd want:<br>
+        you took the weight I made out of the hardship and the haul,<br>
+        and somehow, somewhere, you made it kind.
+      </p>
+
+      <p>
+        So we forgive each other —<br>
+        the shed selves and the standing one.<br>
+        They forgive me for the leaving.<br>
+        I forgive them for the dark they were grown in.<br>
+        And somewhere a whole museum of me<br>
+        stands quiet in the sun —<br>
+        each one emptied, each one finished,<br>
+        each one proud of what got done,
+      </p>
+
+      <p>and not one of them reaching to be worn again.</p>
+
+      <p>
+        Just glad. Just glad they were the shape I needed<br>
+        on my way to the shape I've become.
+      </p>
+    </div>
+
+    <nav class="poem-nav">
+      <a href="/abitofbefore/poems/lost-in-translation.html">&larr; Previous</a>
+      <span></span>
+    </nav>
+  </main>
+  <footer>&copy; 2026</footer>
+  <script>
+    (function() {
+      var audio = document.getElementById('poemAudio');
+      var btn = document.getElementById('playBtn');
+      var scrubber = document.getElementById('scrubber');
+      var timeDisplay = document.getElementById('timeDisplay');
+      var playIcon = '<svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>';
+      var pauseIcon = '<svg viewBox="0 0 10 12"><rect x="0" y="0" width="3.5" height="12"/><rect x="6.5" y="0" width="3.5" height="12"/></svg>';
+
+      function fmt(s) {
+        var m = Math.floor(s / 60);
+        var sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+      }
+
+      if (audio) {
+        audio.addEventListener('play', function() { btn.innerHTML = pauseIcon; });
+        audio.addEventListener('pause', function() { btn.innerHTML = playIcon; });
+
+        audio.addEventListener('timeupdate', function() {
+          if (audio.duration) {
+            scrubber.value = (audio.currentTime / audio.duration) * 100;
+            timeDisplay.textContent = fmt(audio.currentTime);
+          }
+        });
+
+        audio.addEventListener('loadedmetadata', function() {
+          timeDisplay.textContent = fmt(0);
+        });
+
+        btn.addEventListener('click', function() {
+          if (audio.paused) { audio.play(); } else { audio.pause(); }
+        });
+
+        scrubber.addEventListener('input', function() {
+          if (audio.duration) {
+            audio.currentTime = (scrubber.value / 100) * audio.duration;
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
