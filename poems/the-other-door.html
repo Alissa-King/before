@@ -20,6 +20,20 @@
       <p class="poem-meta">II</p>
     </div>
 
+
+    <div class="poem-audio">
+      <div class="audio-player">
+        <button class="audio-play-btn" id="playBtn" aria-label="Play">
+          <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+        </button>
+        <input class="audio-scrubber" id="scrubber" type="range" min="0" max="100" value="0" step="0.1">
+        <span class="audio-time" id="timeDisplay">0:00</span>
+      </div>
+      <audio id="poemAudio">
+        <source src="/abitofbefore/audio/the-other-door.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
     <div class="poem-body">
       <p>What if you've already done this?</p>
 
@@ -125,9 +139,49 @@
 
     <nav class="poem-nav">
       <a href="/abitofbefore/poems/fluent-in-fine.html">&larr; Previous</a>
-      <a href="/abitofbefore/poems/translation.html">Next &rarr;</a>
+      <a href="/abitofbefore/poems/lost-in-translation.html">Next &rarr;</a>
     </nav>
   </main>
   <footer>&copy; 2026</footer>
+  <script>
+    (function() {
+      var audio = document.getElementById('poemAudio');
+      var btn = document.getElementById('playBtn');
+      var scrubber = document.getElementById('scrubber');
+      var timeDisplay = document.getElementById('timeDisplay');
+      var playIcon = '<svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>';
+      var pauseIcon = '<svg viewBox="0 0 10 12"><rect x="0" y="0" width="3.5" height="12"/><rect x="6.5" y="0" width="3.5" height="12"/></svg>';
+
+      function fmt(s) {
+        var m = Math.floor(s / 60);
+        var sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+      }
+
+      audio.addEventListener('play', function() { btn.innerHTML = pauseIcon; });
+      audio.addEventListener('pause', function() { btn.innerHTML = playIcon; });
+
+      audio.addEventListener('timeupdate', function() {
+        if (audio.duration) {
+          scrubber.value = (audio.currentTime / audio.duration) * 100;
+          timeDisplay.textContent = fmt(audio.currentTime);
+        }
+      });
+
+      audio.addEventListener('loadedmetadata', function() {
+        timeDisplay.textContent = fmt(0);
+      });
+
+      btn.addEventListener('click', function() {
+        if (audio.paused) { audio.play(); } else { audio.pause(); }
+      });
+
+      scrubber.addEventListener('input', function() {
+        if (audio.duration) {
+          audio.currentTime = (scrubber.value / 100) * audio.duration;
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

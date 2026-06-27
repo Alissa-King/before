@@ -185,6 +185,78 @@ footer {
 .about-body { font-weight: 300; font-size: 1rem; line-height: 1.9; }
 .about-body p + p { margin-top: 1.4rem; }
 
+/* audio player */
+.poem-audio { margin-bottom: 3rem; }
+
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: #0d0b07;
+}
+
+.audio-play-btn {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--amber-dim);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--amber);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, color 0.3s;
+  padding: 0;
+}
+
+.audio-play-btn:hover { border-color: var(--amber); }
+
+.audio-play-btn svg { width: 0.7rem; height: 0.7rem; fill: currentColor; }
+
+.audio-scrubber {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1px;
+  background: var(--rule);
+  outline: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.audio-scrubber::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--amber);
+  cursor: pointer;
+}
+
+.audio-scrubber::-moz-range-thumb {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--amber);
+  border: none;
+  cursor: pointer;
+}
+
+.audio-time {
+  flex-shrink: 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  font-family: 'Cormorant SC', serif;
+  color: var(--muted);
+  min-width: 2.5rem;
+  text-align: right;
+}
+
 @media (max-width: 600px) {
   html { font-size: 18px; }
   header { padding: 2.5rem 1.5rem 2rem; flex-direction: column; gap: 1.2rem; }
