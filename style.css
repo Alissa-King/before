@@ -1,20 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+SC:wght@300&display=swap');
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:      #080604;
-  --bg-2:    #100d09;
-  --text:    #d4c9b4;
-  --muted:   #5a5248;
-  --amber:   #b8863c;
+  --bg:        #080604;
+  --text:      #d4c9b4;
+  --muted:     #5a5248;
+  --amber:     #b8863c;
   --amber-dim: #7a5820;
-  --rule:    #1e1a14;
-  --max-width: 600px;
+  --rule:      #1e1a14;
+  --max:       600px;
 }
 
 html {
@@ -23,22 +18,16 @@ html {
   color: var(--text);
   font-size: 21px;
   line-height: 1.85;
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* subtle warm vignette */
   background-image: radial-gradient(ellipse at 50% 0%, #1a1208 0%, #080604 70%);
   background-attachment: fixed;
 }
 
-/* ── Header ── */
+body { min-height: 100vh; display: flex; flex-direction: column; }
 
+/* header */
 header {
   padding: 3.5rem 3rem 3rem;
-  max-width: calc(var(--max-width) + 6rem);
+  max-width: calc(var(--max) + 6rem);
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -55,10 +44,7 @@ header {
   letter-spacing: 0.22em;
 }
 
-nav {
-  display: flex;
-  gap: 2.5rem;
-}
+nav { display: flex; gap: 2.5rem; }
 
 nav a {
   color: var(--muted);
@@ -70,15 +56,12 @@ nav a {
   transition: color 0.3s;
 }
 
-nav a:hover {
-  color: var(--amber);
-}
+nav a:hover { color: var(--amber); }
 
-/* ── Main ── */
-
+/* main */
 main {
   flex: 1;
-  max-width: var(--max-width);
+  max-width: var(--max);
   margin: 0 auto;
   padding: 3rem 2rem 7rem;
   width: 100%;
@@ -94,19 +77,16 @@ footer {
   font-weight: 300;
 }
 
-/* ── Index ── */
-
-.index-intro {
+/* index */
+.intro {
   color: var(--muted);
   font-style: italic;
   font-size: 0.9rem;
-  margin-bottom: 3.5rem;
   font-weight: 300;
+  margin-bottom: 3.5rem;
 }
 
-.poem-list {
-  list-style: none;
-}
+.poem-list { list-style: none; }
 
 .poem-list li {
   border-top: 1px solid var(--rule);
@@ -117,11 +97,9 @@ footer {
   align-items: baseline;
 }
 
-.poem-list li:last-child {
-  border-bottom: 1px solid var(--rule);
-}
+.poem-list li:last-child { border-bottom: 1px solid var(--rule); }
 
-.poem-number {
+.num {
   color: var(--amber-dim);
   font-size: 0.68rem;
   letter-spacing: 0.06em;
@@ -138,15 +116,10 @@ footer {
   transition: color 0.3s;
 }
 
-.poem-list a:hover {
-  color: var(--amber);
-}
+.poem-list a:hover { color: var(--amber); }
 
-/* ── Poem page ── */
-
-.poem-header {
-  margin-bottom: 3.5rem;
-}
+/* poem page */
+.poem-header { margin-bottom: 3.5rem; }
 
 .poem-header h1 {
   font-size: 1.8rem;
@@ -165,7 +138,6 @@ footer {
   font-weight: 300;
 }
 
-/* thin amber rule under title */
 .poem-header::after {
   content: '';
   display: block;
@@ -179,21 +151,11 @@ footer {
   font-size: 1.05rem;
   font-weight: 300;
   line-height: 2;
-  color: var(--text);
 }
 
-.poem-body p {
-  margin-bottom: 1.7rem;
-}
-
-.poem-body p:last-child {
-  margin-bottom: 0;
-}
-
-.poem-body em {
-  font-style: italic;
-  color: #c8b48a;
-}
+.poem-body p { margin-bottom: 1.7rem; }
+.poem-body p:last-child { margin-bottom: 0; }
+.poem-body em { font-style: italic; color: #c8b48a; }
 
 .poem-nav {
   margin-top: 5rem;
@@ -207,19 +169,11 @@ footer {
   font-weight: 300;
 }
 
-.poem-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.3s;
-}
+.poem-nav a { color: var(--muted); text-decoration: none; transition: color 0.3s; }
+.poem-nav a:hover { color: var(--amber); }
 
-.poem-nav a:hover {
-  color: var(--amber);
-}
-
-/* ── About ── */
-
-.page-eyebrow {
+/* about */
+.eyebrow {
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   font-family: 'Cormorant SC', serif;
@@ -228,18 +182,8 @@ footer {
   margin-bottom: 2rem;
 }
 
-.about-content {
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.9;
-  color: var(--text);
-}
-
-.about-content p + p {
-  margin-top: 1.4rem;
-}
-
-/* ── Responsive ── */
+.about-body { font-weight: 300; font-size: 1rem; line-height: 1.9; }
+.about-body p + p { margin-top: 1.4rem; }
 
 @media (max-width: 600px) {
   html { font-size: 18px; }
